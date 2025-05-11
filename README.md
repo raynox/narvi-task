@@ -16,6 +16,7 @@ The app presents Open/Closed Principle by implementing two different search inpu
 The codebase incorporates several functional programming techniques, marked with comments:
 ```typescript
 // Functional Programming Technique: [Technique Name]
+```
 
 ### Testing
 
