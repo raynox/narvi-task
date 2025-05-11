@@ -7,7 +7,6 @@ import { UserSearch } from "./search/UserSearch"
 import { UserList } from "./users/components/UserList"
 import { useGitHubUsersSearch } from "./search/hooks/useGitHubUsersSearch"
 import { DebouncedSearchInput } from "./search/components/DebouncedSearchInput"
-import { ButtonSearchInput } from "./search/components/ButtonSearchInput"
 
 // Create a client
 const queryClient = new QueryClient({

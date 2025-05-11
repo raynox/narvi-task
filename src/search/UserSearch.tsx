@@ -33,7 +33,6 @@ export const UserSearch = ({ onSearchTextChange, onSearchTrigger, isLoading, Sea
     mode: "onChange",
   })
 
-  console.log(errors)
   const username = watch("username")
 
   useEffect(() => {
