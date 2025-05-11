@@ -1,26 +1,77 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+"use client"
+
+import { useState, useEffect } from "react"
+import { Container, CssBaseline, ThemeProvider, createTheme } from "@mui/material"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { UserSearch } from "./search/UserSearch"
+import { UserList } from "./users/components/UserList"
+import { useGitHubUsersSearch } from "./search/hooks/useGitHubUsersSearch"
+import { DebouncedSearchInput } from "./search/components/DebouncedSearchInput"
+import { ButtonSearchInput } from "./search/components/ButtonSearchInput"
+
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+})
+
+// Create a theme
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#2196f3",
+    },
+    secondary: {
+      main: "#f50057",
+    },
+  },
+})
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("")
+  const [executiveSearchTerm, setExecutiveSearchTerm] = useState("")
+  const { data, isLoading, isError, fetchNextPage, hasNextPage, refetch, isFetched } = useGitHubUsersSearch(executiveSearchTerm)
+
+  useEffect(() => {
+    if (executiveSearchTerm) {
+      refetch()
+    }
+  }, [executiveSearchTerm, refetch])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        <UserSearch 
+          onSearchTextChange={setSearchTerm} 
+          onSearchTrigger={() => setExecutiveSearchTerm(searchTerm)}
+          isLoading={isLoading} 
+          SearchInput={DebouncedSearchInput}
+        />
+
+        <UserList
+          users={data?.users || []}
+          isLoading={isLoading}
+          isError={isError}
+          hasNextPage={hasNextPage}
+          fetchNextPage={fetchNextPage}
+          searchTerm={searchTerm}
+          isFetched={isFetched}
+        />
+      </Container>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default function AppWithProviders() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  )
+}
