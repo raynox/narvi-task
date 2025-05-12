@@ -10,7 +10,7 @@ import { Typography } from "../../shared/components/Typography"
 const findMaxId = (users: GitHubUser[], max = -Infinity): number => {
   if (users.length === 0) return max
   const [current, ...rest] = users
-  return findMaxId(rest, Math.max(max, current.id))
+  return findMaxId(rest, current.id > max ? current.id : max)
 }
 
 interface UserListProps {
