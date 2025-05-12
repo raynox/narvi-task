@@ -56,7 +56,7 @@ npm test
 
 ## Notes on Requirements
 
-1. **File Count**: While the requirement specified a maximum of 4 core files, I've chosen to organize the code into more files to improve maintainability and testability.
+1. **Key Files**:
 
 Key files and their purposes:
 - `App.tsx`: Main application component that integrates all components and logic
