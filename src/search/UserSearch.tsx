@@ -10,7 +10,9 @@ import { useEffect } from "react"
 import React from "react"
 
 const schema = yup.object({
-  username: yup.string().min(1, "Please enter a username to search").required("Please enter a username to search"),
+  username: yup.string()
+    .min(1, "Please enter a username to search")
+    .required("Please enter a username to search"),
 })
 
 interface UserSearchProps {
