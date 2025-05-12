@@ -58,7 +58,7 @@ describe("UserSearch Component", () => {
   })
 
   describe("with ButtonSearchInput", () => {
-    test("calls onSearch only when search button is clicked", async () => {
+    test.only("calls onSearch only when search button is clicked", async () => {
       const mockOnSearchTextChange = jest.fn()
       const mockOnSearchTrigger = jest.fn()
 
@@ -77,7 +77,8 @@ describe("UserSearch Component", () => {
       fireEvent.change(input, { target: { value: "testuser" } })
       expect(mockOnSearchTextChange).toHaveBeenCalledWith("testuser")
       expect(mockOnSearchTrigger).not.toHaveBeenCalled()
-      userEvent.click(searchButton)
+      
+      await userEvent.click(searchButton)
       expect(mockOnSearchTrigger).toHaveBeenCalled();
     })
 

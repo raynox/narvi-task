@@ -62,11 +62,8 @@ Key files and their purposes:
 - `App.tsx`: Main application component that integrates all components and logic
 - `UserSearch.tsx`: Main search component that integrates all search functionality
 - `UserList.tsx`: Manages the list of user cards and infinite scrolling
-- `UserCard.tsx`: Displays individual user information in a card format
 - `DebouncedSearchInput.tsx`: Input component with debounce functionality
-- `useDebounceSearch.ts`: Custom hook for debounced search input handling
 - `useGitHubUsersSearch.ts`: Custom hook for GitHub API integration and data fetching
-- `searchGitHubUsers.ts`: Core function for making GitHub API requests
 
 2. **React Query**: Used for efficient data fetching and caching of GitHub API responses.
 

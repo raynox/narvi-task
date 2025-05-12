@@ -1,6 +1,5 @@
 import { Box, Button } from "@mui/material"
 import { FormValues, SearchInputProps } from "../types"
-import { useButtonSearch } from "../hooks/useButtonSearch"
 import { SearchInputTextField } from "../../shared/components/SearchInputTextField"
 
 export const ButtonSearchInput: React.FC<SearchInputProps<FormValues>> = ({
@@ -10,9 +9,12 @@ export const ButtonSearchInput: React.FC<SearchInputProps<FormValues>> = ({
   searchText,
   onSearchTrigger,
 }) => {
-  const { handleSearch } = useButtonSearch((value) => {
-    onSearchTrigger?.()
-  })
+  const handleClick = () => {
+    console.log("searchText", searchText)
+    if (searchText) {
+      onSearchTrigger()
+    }
+  }
 
   return (
     <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
@@ -28,12 +30,8 @@ export const ButtonSearchInput: React.FC<SearchInputProps<FormValues>> = ({
       <Button 
         variant="contained"
         data-testid="search-button"
-        onClick={() => {
-          if (searchText) {
-            handleSearch(searchText)
-          }
-        }}
-        disabled={isLoading || !searchText || !!errors.length}
+        onClick={handleClick}
+        disabled={isLoading || !searchText || Object.keys(errors).length > 0}
       >
         Search
       </Button>

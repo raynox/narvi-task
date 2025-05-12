@@ -1,10 +1,9 @@
 "use client"
 
 import { useEffect, useMemo, useRef } from "react"
-import { Box, Grid, Alert, CircularProgress, AvatarGroup, Avatar } from "@mui/material"
+import { Box, Grid, Alert, CircularProgress, AvatarGroup, Avatar, Card, CardHeader, Link, CardContent } from "@mui/material"
 import InfiniteScroll from "react-infinite-scroller"
 import { GitHubUser } from "../types"
-import { UserCard } from "./UserCard"
 import { Typography } from "../../shared/components/Typography"
 
 // Functional Programming Technique: Recursion
@@ -93,7 +92,24 @@ export const UserList = ({ users, isLoading, isError, hasNextPage, fetchNextPage
         <Grid container spacing={4}>
           {users.map((user) => (
             <Grid item xs={12} sm={12} md={12} key={user.id}>
-              <UserCard user={user} />
+              <Card>
+                <CardHeader
+                  avatar={
+                    <Avatar src={user.avatar_url} alt={user.login} />
+                  }
+                  title={
+                    <Link href={user.html_url} target="_blank" rel="noopener noreferrer" underline="hover">
+                      {user.login}
+                    </Link>
+                  }
+                  subheader={`Type: ${user.type}`}
+                />
+                <CardContent>
+                  <Typography variant="body2" color="text.secondary">
+                    Score: {user.score.toFixed(2)}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Grid>
           ))}
         </Grid>

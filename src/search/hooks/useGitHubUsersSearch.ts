@@ -1,5 +1,4 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { searchGitHubUsers } from "../api/searchGitHubUsers"
 import { GitHubSearchResponse } from "../types"
 
 
@@ -12,6 +11,23 @@ const isGreaterThan = (threshold: number) => (value: number) => value > threshol
 
 // Functional Programming Technique: Partial Application
 const isGreaterThanZero = isGreaterThan(0)
+
+export const searchGitHubUsers = async (username: string, page = 1): Promise<GitHubSearchResponse> => {
+    if (!username.trim()) {
+      return { total_count: 0, incomplete_results: false, items: [] }
+    }
+  
+    const perPage = 20
+    const response = await fetch(
+      `https://api.github.com/search/users?q=${encodeURIComponent(username)}&page=${page}&per_page=${perPage}`,
+    )
+  
+    if (!response.ok) {
+      throw new Error("GitHub API request failed")
+    }
+  
+    return response.json()
+  }
 
 export const useGitHubUsersSearch = (username: string) => {
     return useInfiniteQuery({

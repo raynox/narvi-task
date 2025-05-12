@@ -1,4 +1,4 @@
-import { searchGitHubUsers } from "./searchGitHubUsers"
+import { searchGitHubUsers } from "./useGitHubUsersSearch"
 
 global.fetch = jest.fn()
 
