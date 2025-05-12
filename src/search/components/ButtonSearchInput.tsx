@@ -10,7 +10,6 @@ export const ButtonSearchInput: React.FC<SearchInputProps<FormValues>> = ({
   onSearchTrigger,
 }) => {
   const handleClick = () => {
-    console.log("searchText", searchText)
     if (searchText) {
       onSearchTrigger()
     }

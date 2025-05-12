@@ -58,7 +58,7 @@ describe("UserSearch Component", () => {
   })
 
   describe("with ButtonSearchInput", () => {
-    test.only("calls onSearch only when search button is clicked", async () => {
+    test("calls onSearch only when search button is clicked", async () => {
       const mockOnSearchTextChange = jest.fn()
       const mockOnSearchTrigger = jest.fn()
 
