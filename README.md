@@ -56,9 +56,8 @@ npm test
 
 ## Notes on Requirements
 
-1. **Key Files**:
+1. **Key files and their purposes**:
 
-Key files and their purposes:
 - `App.tsx`: Main application component that integrates all components and logic
 - `UserSearch.tsx`: Main search component that integrates all search functionality
 - `UserList.tsx`: Manages the list of user cards and infinite scrolling
