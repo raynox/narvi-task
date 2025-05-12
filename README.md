@@ -1,5 +1,7 @@
 # GitHub User Search
 
+A React application that allows users to search for GitHub users with real-time results and infinite scrolling.
+
 ## Notes on Requirements
 
 1. **Key files and their purposes**:
@@ -27,8 +29,6 @@
 9. **Functional Programming**: Incorporated multiple functional programming techniques as shown above.
 
 10. **Clarity**: All requirements were clear.
-
-A React application that allows users to search for GitHub users with real-time results and infinite scrolling.
 
 ## Technical Implementation
 
