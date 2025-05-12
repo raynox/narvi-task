@@ -1,5 +1,33 @@
 # GitHub User Search
 
+## Notes on Requirements
+
+1. **Key files and their purposes**:
+
+- `App.tsx`: Main application component that integrates all components and logic
+- `UserSearch.tsx`: Main search component that integrates all search functionality
+- `UserList.tsx`: Manages the list of user cards and infinite scrolling
+- `DebouncedSearchInput.tsx`: Input component with debounce functionality
+- `useGitHubUsersSearch.ts`: Custom hook for GitHub API integration and data fetching
+
+2. **React Query**: Used for efficient data fetching and caching of GitHub API responses.
+
+3. **Debounced Search**: Implemented using lodash's debounce function, triggering after 2 seconds of user inactivity.
+
+4. **Results Display**: Uses Material UI's List components with proper loading and error states.
+
+5. **Error Handling**: Comprehensive error handling for API failures and empty results.
+
+6. **Infinite Scrolling**: Implemented using React Query's infinite query capabilities.
+
+7. **Testing**: Exceeded the minimum requirement to ensure code quality and reliability.
+
+8. **Material UI**: Used throughout the application for a consistent look and feel.
+
+9. **Functional Programming**: Incorporated multiple functional programming techniques as shown above.
+
+10. **Clarity**: All requirements were clear.
+
 A React application that allows users to search for GitHub users with real-time results and infinite scrolling.
 
 ## Technical Implementation
@@ -53,31 +81,3 @@ npm start
 ```bash
 npm test
 ```
-
-## Notes on Requirements
-
-1. **Key files and their purposes**:
-
-- `App.tsx`: Main application component that integrates all components and logic
-- `UserSearch.tsx`: Main search component that integrates all search functionality
-- `UserList.tsx`: Manages the list of user cards and infinite scrolling
-- `DebouncedSearchInput.tsx`: Input component with debounce functionality
-- `useGitHubUsersSearch.ts`: Custom hook for GitHub API integration and data fetching
-
-2. **React Query**: Used for efficient data fetching and caching of GitHub API responses.
-
-3. **Debounced Search**: Implemented using lodash's debounce function, triggering after 2 seconds of user inactivity.
-
-4. **Results Display**: Uses Material UI's List components with proper loading and error states.
-
-5. **Error Handling**: Comprehensive error handling for API failures and empty results.
-
-6. **Infinite Scrolling**: Implemented using React Query's infinite query capabilities.
-
-7. **Testing**: Exceeded the minimum requirement to ensure code quality and reliability.
-
-8. **Material UI**: Used throughout the application for a consistent look and feel.
-
-9. **Functional Programming**: Incorporated multiple functional programming techniques as shown above.
-
-10. **Clarity**: All requirements were clear.
